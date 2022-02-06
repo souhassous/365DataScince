@@ -1,0 +1,27 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(ggplot2)
+mydata <- read.csv("histogram_data.csv",
+                   header = TRUE,
+                   sep = ",")
+mydata
+```
+
+```{r}
+histogram <- ggplot(data = mydata,
+                    aes(x = Price)) +
+  geom_histogram(bins = 8, fill = "navy", color="white") +
+  ggtitle("Distribution of Real Estate Prices") +
+  theme_classic()+
+  xlab("Prices in K$")+
+  ylab("Number of Properties")+
+  theme(plot.title = element_text(size = 16, 
+                                  face = "bold", colour = "navy"))
+
+histogram
+```
+
