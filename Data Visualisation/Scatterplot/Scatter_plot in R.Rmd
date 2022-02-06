@@ -1,0 +1,52 @@
+---
+title: "Scatter plot in R"
+output: html_notebook
+---
+```{r}
+library(ggplot2)
+library(wesanderson)
+names(wes_palettes)
+```
+
+```{r}
+df <- read.csv("scatter_data.csv",
+               header = TRUE,
+               sep = ",")
+df
+```
+
+```{r}
+scatter <- ggplot(data = df,
+                  aes(x = Area..ft.., 
+                      y = Price))+
+  geom_point(aes(color = factor(Building.Type)),
+             size = 2,
+             alpha = 0.5 ) +
+  labs(color = "Building Type") +
+  scale_color_manual(values = wes_palette(name = "Darjeeling2",
+                                          n = 5))+
+  ggtitle("Relationship between Area and Prices of California Real Estate") +
+  ylab("Price (K$)")+
+  xlab("Area (sq. ft.)")+
+  theme_classic() +
+  theme(legend.justification = c(0.01, 1),
+        legend.position = c(0.01, 1))
+scatter
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
