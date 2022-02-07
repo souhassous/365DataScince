@@ -1,0 +1,27 @@
+---
+title: "Scatter Plot HW R"
+output: html_notebook
+---
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+mydata <- read.csv("student_scores_data.csv",
+                   header = TRUE,
+                   sep = ",")
+mydata
+```
+```{r}
+scatterPLot <- ggplot(data = mydata,
+                      aes(x = SAT,
+                          y = GPA)) +
+  geom_point(color = "darkblue",
+             size = 4,
+             alpha = 0.6)+
+  ggtitle("Realtionship between SAT & GPA Scores of Students") +
+  theme_classic()
+scatterPLot
+```
+
